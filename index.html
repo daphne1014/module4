@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,8 +9,29 @@
     <title>Module4</title>
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
+
 <body>
+    <div class="container highscore">
+        <div class="row justify-content-between">
+            <div class="col-4">
+                <a>View Highscores</a>
+            </div>
+            <div class="col-4 timer">
+                Time: <span id="timer-span">0</span>
+            </div>
+        </div>
+    </div>
+    <div class="quiz-container">
+        <div class="quiz-start">
+            <h1>Coding Quiz Challenge</h1>
+            <p>Try to answer the follwoing code-related questions within the time limit.
+                <br>Keep in mind that incorrect answers will penalize your time by ten seconds!
+            </p>
+            <button type="button" class="btn btn-primary" id="submit">Submit Quiz</button>
+        </div>
+    </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="./assets/js/script.js"></script>
 </body>
+
 </html>
