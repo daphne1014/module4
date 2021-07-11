@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
-    <title>Module4</title>
+    <title>Code Quiz</title>
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
@@ -14,20 +14,29 @@
     <div class="container highscore">
         <div class="row justify-content-between">
             <div class="col-4">
-                <a>View Highscores</a>
+                <div id="scoreContainer"></div>
             </div>
             <div class="col-4 timer">
-                Time: <span id="timer-span">0</span>
+                Time: <span id="counter">0</span>
             </div>
         </div>
     </div>
-    <div class="quiz-container">
-        <div class="quiz-start">
+    <div class="container">
+        <div id="start" class="flex-column flex-center">
             <h1>Coding Quiz Challenge</h1>
             <p>Try to answer the follwoing code-related questions within the time limit.
                 <br>Keep in mind that incorrect answers will penalize your time by ten seconds!
             </p>
-            <button type="button" class="btn btn-primary" id="submit">Submit Quiz</button>
+            <button type="button" class="btn btn-primary" id="start_button">Start Quiz</button>
+        </div>
+        <div id="quiz">
+            <div id="question"></div>
+            <div id="choices">
+                <div class="choice" id="a" onclick="checkAnswer('A')"></div>
+                <div class="choice" id="b" onclick="checkAnswer('B')"></div>
+                <div class="choice" id="c" onclick="checkAnswer('C')"></div>
+                <div class="choice" id="d" onclick="checkAnswer('D')"></div>
+            </div>
         </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
