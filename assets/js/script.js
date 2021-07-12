@@ -2,13 +2,17 @@ let startbtn = document.getElementById("start_button");
 console.dir(startbtn);
 let startContainer = document.getElementById('start');
 let quiz = document.getElementById("quiz");
+let quizEnd = document.getElementById("end_quiz");
 let question = document.getElementById("question");
 let choiceA = document.getElementById("a");
 let choiceB = document.getElementById("b");
 let choiceC = document.getElementById("c");
 let choiceD = document.getElementById("d");
+let initialQ = document.getElementById("ask_initials");
+let initials = document.getElementById("initials");
+let submit = document.getElementById("submit");
 let counter = document.getElementById("counter");
-const scoreDiv = document.getElementById("scoreContainer");
+let scoreDiv = document.getElementById("scoreContainer");
 
 let questions = [
     {
@@ -46,13 +50,66 @@ let questions = [
 ];
 
 let lastQuestion = questions.length - 1;
-let startQuestion = 0;
+let runningQuestion = 0;
 let count = 0;
 
-let startQuiz = function (){
-    for (var i=0; i<questions.length;i++){
-        window.alert('quiz started '+i)
+function renderQuestion() {
+    let q = questions[runningQuestion];
+    question.innerHTML = "<h2>" + q.question + "</h2>";
+    choiceA.innerHTML = "<button>" + q.choiceA + "</button>";
+    choiceB.innerHTML = "<button>" + q.choiceB + "</button>";
+    choiceC.innerHTML = "<button>" + q.choiceC + "</button>";
+    choiceD.innerHTML = "<button>" + q.choiceD + "</button>";
+}
+
+startbtn.addEventListener("click", startQuiz);
+
+// start quiz
+function startQuiz() {
+    start.style.display = "none";
+    renderQuestion();
+    quiz.style.display = "block"
+};
+
+
+function endquiz() {
+    start.style.display = "none";
+    quiz.style.display = "none";
+    quizEnd.style.display = "block";
+    initialQ.innerHTML = "<h2>Enter your Initials</h2>"
+    initials.innerHTML = "<input type='text' id='initialData'>";
+    submit.innerHTML = "<button> submit </button>";
+    // localStorage.setItem('score', score);
+
+};
+
+// checkAnwer
+
+function checkAnswer(answer) {
+    if (answer == questions[runningQuestion].correct) {
+        // answer is correct
+        // score++;
+    } else {
+        // counter - 1000;
+    }
+    // count = 0;
+    if (runningQuestion < lastQuestion) {
+        runningQuestion++;
+        renderQuestion();
+    } else {
+        // end the quiz and show the score
+        endquiz();
     }
 };
+
+
+
+
+
+// let startQuiz = function (){
+//     for (var i=0; i<questions.length;i++){
+//         $(".container")
+//     }
+// };
 
 $(startbtn).click(startQuiz);
