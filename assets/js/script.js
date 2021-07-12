@@ -45,86 +45,14 @@ let questions = [
     }
 ];
 
-let lastQuestion = questions.length -1;
-let runningQuestion = 0;
+let lastQuestion = questions.length - 1;
+let startQuestion = 0;
 let count = 0;
-const questionTime = 10;
-let TIMER;
-let score = 0;
 
-function renderQuestion(){
-    let q=questions[runningQuestion];
-    question.innerHTML = "<h2>"+q.question+"</h2>";
-    choiceA.innerHTML = "<button>"+q.choiceA+"</button>";
-    choiceB.innerHTML = "<button>"+q.choiceB+"</button>";
-    choiceC.innerHTML = "<button>"+q.choiceC+"</button>";
-    choiceD.innerHTML = "<button>"+q.choiceD+"</button>";
-}
-
-startbtn.addEventListener("click",startQuiz);
-
-// start quiz
-function startQuiz(){
-    start.style.display = "none";
-    renderQuestion();
-    quiz.style.display = "block";
-    renderCounter();
-    TIMER = setInterval(renderCounter,1000); // 1000ms = 1s
-}
-
-
-// counter render
-
-function renderCounter(){
-    if(count <= questionTime){
-        counter.innerHTML = count;
-        count++
-    }else{
-        count = 0;
-        if(runningQuestion < lastQuestion){
-            runningQuestion++;
-            renderQuestion();
-        }else{
-            // end the quiz and show the score
-            clearInterval(TIMER);
-        }
-    }
-}
-
-// checkAnwer
-
-function checkAnswer(answer){
-    if( answer == questions[runningQuestion].correct){
-        // answer is correct
-        score++;
-    }else{    
-        counter-1000;
-    }
-    count = 0;
-    if(runningQuestion < lastQuestion){
-        runningQuestion++;
-        renderQuestion();
-    }else{
-        // end the quiz and show the score
-        clearInterval(TIMER);
-        endquiz();
+let startQuiz = function (){
+    for (var i=0; i<questions.length;i++){
+        window.alert('quiz started '+i)
     }
 };
 
-function endquiz(){
-    question.innerHTML = "<h2>Save your progress</h2>";
-    choiceA.innerHTML = "<p> final score: "+score +" /4</p>";
-    choiceB.innerHTML = "<h2>What is your initial?</h2>";
-    choiceC.innerHTML = "";
-    choiceD.innerHTML = "";
-
-    localStorage.setItem('score', score);
-
-};
-
-
-
-
-
-
-
+$(startbtn).click(startQuiz);
