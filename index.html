@@ -11,25 +11,24 @@
 </head>
 
 <body>
-    <div class="container highscore">
+    <!-- High Score Link and Timer START-->
+    <div class="container show-score">
         <div class="row justify-content-between">
-            <div class="col-4">
-                <div id="scoreContainer"></div>
-            </div>
-            <div class="col-4 timer">
-                Time: <span id="counter">0</span>
-            </div>
+            <div id="view-score" class="col-4">View high scores</div>
+            <div class="col-4">Time: <span id="timer">0</span></div>
         </div>
     </div>
+    <!-- Start Block START -->
     <div class="container">
-        <div id="start" class="flex-column flex-center">
+        <div id="start-block" class="flex-column flex-center">
             <h1>Coding Quiz Challenge</h1>
             <p>Try to answer the follwoing code-related questions within the time limit.
                 <br>Keep in mind that incorrect answers will penalize your time by ten seconds!
             </p>
-            <button type="button" class="btn btn-primary" id="start_button">Start Quiz</button>
+            <button id="start-btn">Start Quiz</button>
         </div>
-        <div id="quiz">
+        <!-- Questions and Choices START -->
+        <div id="quiz-block" class="flex-column flex-center">
             <div id="question"></div>
             <div id="choices">
                 <div class="choice" id="a" onclick="checkAnswer('A')"></div>
@@ -38,13 +37,24 @@
                 <div class="choice" id="d" onclick="checkAnswer('D')"></div>
             </div>
         </div>
-        <div id="end_quiz">
-            <div id="ask_initials"></div>
-            <div class="input" type="text" id="initials"></div>
-            <div type="button" id="submit" onclick="insertData()"></div>
+        <!-- Results Block Start -->
+        <div id="result-correct" class="flex-column flex-center">Correct!</div>
+        <div id="result-wrong" class="flex-column flex-center">Wrong!</div>
+        <!-- Results START -->
+        <div id="result-block" class="flex-column flex-center">
+            <h2>All done!</h2>
+            <p>Your final score is <span id="score"></span></p>
+            <p id="initial-submit"> 
+                Enter initials: <input type="text" id="initial">
+                <button id="submit-btn">Submit</button>
+            </p>
+        </div>
+        <!-- High Score START -->
+        <div id="highscore-block" class="flex-column flex-center">
+            <h1>High Scores</h1>
+            <div id="highscore"></div>
         </div>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="./assets/js/script.js"></script>
 </body>
 
